@@ -10,7 +10,9 @@ interface MapModalProps {
 
 const MapModal: React.FC<MapModalProps> = ({ isOpen, onClose, address, memberName }) => {
   const encodedAddress = encodeURIComponent(address);
-  const mapSrc = `https://www.google.com/maps/embed/v1/place?key=AIzaSyA6_ZM5h5ZXvHxccoMt3g0mY3iKvGLIVac&q=${encodedAddress}`;
+  const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+const mapSrc = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodedAddress}`;
+  
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
